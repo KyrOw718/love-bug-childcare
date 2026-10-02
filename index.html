@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Love Bug Childcare — Where Little Bugs Grow Big Wings</title>
+<meta name="description" content="Love Bug Childcare: a licensed, nurturing daycare offering infant, toddler, preschool, and before/after-school programs. Register your little bug today.">
+<meta property="og:title" content="Love Bug Childcare">
+<meta property="og:description" content="A warm, safe home-away-from-home where little ones learn, play, and grow.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#c9184a">
+<meta name="referrer" content="no-referrer">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9E%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href='data:application/manifest+json,{"name":"Love Bug Childcare","short_name":"LoveBug","display":"standalone","background_color":"%23fffbf5","theme_color":"%23c9184a"}'>
+<style>
+:root{
+  --berry:#c9184a; --berry-deep:#800f2f; --blush:#ffe5ec; --cream:#fffbf5;
+  --ink:#3d2c34; --muted:#8a7480; --mint:#4caf7d; --sunny:#ffb703;
+  --gold:#d4a24e; --gold-soft:#f6d58f;
+  --card:#ffffff; --ring:0 0 0 4px rgba(201,24,74,.15);
+  --shadow-sm:0 2px 8px rgba(61,44,52,.08);
+  --shadow-md:0 10px 30px rgba(61,44,52,.12);
+  --radius:22px;
+  --display:'Didot','Bodoni MT','Playfair Display',Georgia,'Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:var(--gold-soft);color:var(--berry-deep)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--berry);color:#fff;padding:.6rem 1rem;z-index:100;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+a{color:var(--berry)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--sunny);outline-offset:2px;border-radius:8px}
+
+/* ---------- HEADER ---------- */
+.hero{position:relative;background:linear-gradient(160deg,#fff 0%,var(--blush) 55%,#ffd6e0 100%);padding:4.5rem 1.25rem 5.5rem;text-align:center;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;pointer-events:none}
+.hero::before{width:340px;height:340px;background:radial-gradient(circle at 30% 30%,#ff8fa3,transparent 70%);top:-120px;left:-100px}
+.hero::after{width:420px;height:420px;background:radial-gradient(circle at 70% 40%,#ffd166,transparent 70%);bottom:-200px;right:-140px}
+.logo{width:132px;height:132px;animation:bob 3.5s ease-in-out infinite;position:relative;z-index:1;filter:drop-shadow(0 12px 20px rgba(212,162,78,.4))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+.hero h1{font-family:var(--display);font-size:clamp(2.4rem,7vw,4rem);color:var(--berry-deep);letter-spacing:.5px;position:relative;z-index:1;margin-top:.6rem}
+.hero .tag{font-size:clamp(1rem,2.5vw,1.25rem);color:var(--muted);max-width:560px;margin:.8rem auto 0;position:relative;z-index:1}
+.hero-ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem;position:relative;z-index:1}
+.btn{cursor:pointer;border:none;border-radius:999px;padding:.95rem 2rem;font-size:1rem;font-weight:700;font-family:inherit;text-decoration:none;display:inline-block;transition:transform .15s ease,box-shadow .15s ease,opacity .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.7;cursor:default;transform:none}
+.btn-primary{background:linear-gradient(135deg,var(--berry),var(--berry-deep));color:#fff;box-shadow:0 8px 20px rgba(201,24,74,.35);border:1.5px solid rgba(212,162,78,.55);position:relative;overflow:hidden}
+.btn-light{background:#fff;color:var(--berry-deep);box-shadow:var(--shadow-sm)}
+
+/* ---------- TIP BAR ---------- */
+.tipbar{background:#fff7e6;border:1.5px solid #ffd166;color:#7a5b00;border-radius:14px;max-width:820px;margin:1.2rem auto 0;padding:.8rem 1.2rem;font-size:.9rem;font-weight:600;display:flex;gap:.8rem;align-items:center;box-shadow:var(--shadow-sm)}
+.tipbar[hidden]{display:none}
+.tipbar button{margin-left:auto;background:none;border:none;font-size:1rem;cursor:pointer;color:#7a5b00;font-weight:800;padding:.2rem .5rem;border-radius:8px;min-height:44px;min-width:44px}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;background:rgba(255,251,245,.88);backdrop-filter:blur(10px);box-shadow:var(--shadow-sm);display:flex;justify-content:center;gap:.35rem;flex-wrap:wrap;padding:.65rem .5rem;z-index:20;border-bottom:1px solid rgba(201,24,74,.08)}
+nav a{text-decoration:none;color:var(--berry-deep);font-weight:600;padding:.45rem 1.05rem;border-radius:999px;font-size:.93rem;transition:background .15s}
+nav a:hover,nav a:focus-visible{background:var(--blush)}
+nav a.active{background:var(--berry);color:#fff}
+
+/* ---------- SECTIONS ---------- */
+section{max-width:1080px;margin:0 auto;padding:4.4rem 1.25rem;scroll-margin-top:80px}
+.eyebrow{text-align:center;color:var(--berry);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;margin-bottom:.5rem}
+h2{font-family:var(--display);color:var(--berry-deep);font-size:clamp(1.85rem,4.8vw,2.55rem);margin-bottom:.6rem;text-align:center;letter-spacing:.01em}
+.lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 2rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.card{background:linear-gradient(180deg,#fff,#fffdf7);border-radius:var(--radius);padding:1.7rem;box-shadow:var(--shadow-sm);border:1px solid rgba(212,162,78,.38);position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.card .icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#fdf3df,var(--blush));border:1px solid rgba(212,162,78,.35);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem}
+.card h3{font-family:var(--display);color:var(--berry-deep);margin-bottom:.4rem;font-size:1.15rem}
+.card p{color:var(--muted);font-size:.95rem}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold));opacity:0;transition:opacity .2s}
+.card:hover::after{opacity:1}
+.badges{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem}
+.badge{background:#fff;color:var(--berry-deep);border-radius:999px;padding:.5rem 1.1rem;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-sm);border:1px solid rgba(212,162,78,.35);transition:transform .2s ease}
+.badge:hover{transform:rotate(-2deg) scale(1.06)}
+
+/* ---------- TIMELINE ---------- */
+.timeline{max-width:640px;margin:0 auto;position:relative;padding-left:2.2rem}
+.timeline::before{content:"";position:absolute;left:.6rem;top:.4rem;bottom:.4rem;width:3px;border-radius:3px;background:linear-gradient(var(--gold),var(--berry),var(--gold))}
+.t-item{position:relative;margin-bottom:1.4rem}
+.t-item::before{content:"";position:absolute;left:-1.95rem;top:.45rem;width:15px;height:15px;border-radius:50%;background:#fff;border:4px solid var(--gold)}
+.t-item strong{color:var(--berry-deep)}
+
+/* ---------- TESTIMONIALS ---------- */
+.tst{background:linear-gradient(180deg,var(--blush),var(--cream));border:1px solid rgba(212,162,78,.35);border-radius:var(--radius);padding:2.5rem 1.5rem;text-align:center;max-width:720px;margin:0 auto}
+.tst blockquote{font-family:var(--display);font-size:1.2rem;color:var(--berry-deep);font-style:italic;min-height:5.5em;transition:opacity .3s}
+.tst cite{display:block;margin-top:1rem;color:var(--muted);font-style:normal;font-weight:600;font-size:.92rem}
+.dots{display:flex;gap:.75rem;justify-content:center;margin-top:1.4rem}
+.dot{width:16px;height:16px;border-radius:50%;background:#f3c6d3;border:none;cursor:pointer;padding:0;transition:all .2s}
+.dot:hover{background:#e59aae}
+.dot.on{background:var(--berry);transform:scale(1.25)}
+.stars{color:var(--sunny);letter-spacing:.2em;margin-bottom:.8rem;font-size:1.1rem}
+
+/* ---------- FAQ ---------- */
+details{background:#fff;border-radius:16px;box-shadow:var(--shadow-sm);margin-bottom:.9rem;border:1px solid rgba(201,24,74,.06);overflow:hidden}
+summary{cursor:pointer;padding:1.1rem 1.3rem;font-weight:700;color:var(--berry-deep);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;color:var(--berry);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 1.3rem 1.2rem;color:var(--muted);font-size:.95rem}
+
+/* ---------- FORM ---------- */
+.form-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-md);max-width:820px;margin:0 auto;overflow:hidden}
+.form-head{background:linear-gradient(120deg,var(--berry),var(--berry-deep));color:#fff;padding:1.6rem 2rem;border-bottom:4px double var(--gold)}
+.form-head h3{font-family:var(--display);font-size:1.4rem}
+.form-head p{opacity:.85;font-size:.9rem;margin-top:.2rem}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;margin-top:1rem;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#b8862f,var(--gold),var(--gold-soft));border-radius:99px;transition:width .4s ease}
+.progress-label{font-size:.78rem;opacity:.85;margin-top:.35rem}
+form{padding:2rem}
+fieldset{border:1.5px dashed #f0cfda;border-radius:16px;padding:1.4rem;margin-bottom:1.5rem}
+legend{padding:0 .55rem;color:var(--berry);font-weight:800;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.field{display:flex;flex-direction:column}
+.field>span{font-size:.82rem;font-weight:700;color:var(--berry-deep);margin-bottom:.3rem}
+.field .req::after{content:" *";color:var(--berry)}
+input,select,textarea{width:100%;padding:.7rem .85rem;border:2px solid #f0e4dd;border-radius:12px;font-size:1rem;font-family:inherit;background:#fffdfa;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,162,78,.18)}
+input[type=checkbox]{width:auto;accent-color:var(--berry);min-height:20px;min-width:20px}
+.check-row{display:flex;align-items:flex-start;gap:.6rem;font-size:.92rem;color:var(--muted);padding:.5rem 0;cursor:pointer}
+.check-row:hover{color:var(--berry-deep)}
+.err{display:none;color:var(--berry);font-size:.78rem;font-weight:600;margin-top:.3rem}
+.field.invalid input,.field.invalid select{border-color:var(--berry);background:#fff5f7}
+.field.invalid .err{display:block}
+.hint{font-size:.78rem;color:var(--mint);font-weight:600;margin-top:.3rem;display:none}
+.hint.show{display:block}
+.help-dot{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--blush);color:var(--berry);font-size:.72rem;font-weight:800;cursor:help;margin-left:.35rem;position:relative;vertical-align:middle;border:1px solid rgba(201,24,74,.2)}
+.help-dot:hover::after,.help-dot:focus::after{content:attr(data-tip);position:absolute;bottom:135%;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;padding:.5rem .7rem;border-radius:10px;width:210px;line-height:1.45;white-space:normal;z-index:30;text-align:left}
+.help-box{background:var(--blush);border-radius:14px;padding:1rem 1.2rem;font-size:.9rem;color:var(--berry-deep);display:flex;gap:.6rem;align-items:center;margin-bottom:1.2rem}
+.hp{position:absolute;left:-9999px;top:0;height:0;overflow:hidden;opacity:0}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
+.btn-ghost{background:var(--blush);color:var(--berry-deep)}
+.saved-ind{font-size:.78rem;color:var(--mint);text-align:right;font-weight:600;min-height:1.1em}
+.child-block{position:relative}
+.remove-child{position:absolute;top:.9rem;right:.9rem;background:var(--blush);color:var(--berry-deep);border:none;border-radius:999px;padding:.4rem 1rem;font-weight:700;cursor:pointer;font-size:.82rem;min-height:44px}
+.msg{display:none;text-align:center;padding:1.2rem;border-radius:14px;margin-top:1.2rem;font-weight:700;background:#e7f6ee;color:#1d6b40;border:1.5px solid #9fd9b6}
+.msg.show{display:block}
+.msg .restart{display:inline-block;margin-top:.6rem;background:#fff;border:2px solid #9fd9b6;color:#1d6b40;border-radius:999px;padding:.5rem 1.3rem;font-size:.85rem;cursor:pointer;font-weight:700;min-height:44px}
+.confetti{position:fixed;top:-12px;width:10px;height:14px;z-index:50;pointer-events:none;border-radius:3px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.9}}
+
+/* ---------- FLOATING CTA ---------- */
+.float-cta{position:fixed;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));right:calc(1.2rem + env(safe-area-inset-right,0px));z-index:30;background:linear-gradient(135deg,var(--berry),var(--berry-deep));color:#fff;border:1.5px solid rgba(212,162,78,.5);border-radius:999px;padding:.95rem 1.6rem;font-weight:800;text-decoration:none;box-shadow:0 10px 25px rgba(201,24,74,.4);display:flex;align-items:center;gap:.5rem;transition:transform .2s ease,opacity .25s ease}
+.float-cta:hover{transform:scale(1.05)}
+.float-cta.hidden{transform:scale(0);opacity:0;pointer-events:none}
+
+footer{background:var(--berry-deep);color:#fff;text-align:center;padding:2.8rem 1rem;font-size:.9rem;border-top:1px solid rgba(212,162,78,.5)}
+footer a{color:#ffd6e0}
+.heart{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+
+/* ---------- PLAYFUL LUXE DETAILS ---------- */
+.eyebrow::before{content:"\2726  ";color:var(--gold)}
+.eyebrow::after{content:"  \2726";color:var(--gold)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1,h2{background:linear-gradient(115deg,#6d0b26 0%,var(--berry) 45%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+}
+.btn-primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,60%{left:-60%}100%{left:135%}}
+.sparkle{position:absolute;font-size:1.3rem;color:var(--gold);animation:twinkle 3.2s ease-in-out infinite;z-index:1;pointer-events:none}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8) rotate(0deg)}50%{opacity:1;transform:scale(1.2) rotate(25deg)}}
+.tst::before{content:"\275D";font-family:var(--display);font-size:2.4rem;color:var(--gold);line-height:1;margin-bottom:.4rem;display:block}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),#b8862f);border-radius:99px;border:3px solid var(--cream)}
+
+/* ---------- TOUCH: neutralize sticky hover states ---------- */
+@media(hover:none){
+  .card:hover{transform:none;box-shadow:var(--shadow-sm)}
+  .card:hover::after{opacity:0}
+  .btn:hover{transform:none}
+  .float-cta:hover{transform:none}
+  .dot:hover{background:#f3c6d3}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:600px){
+  form{padding:1.2rem}
+  .hero{padding:3.5rem 1rem 4rem}
+  .float-cta{bottom:calc(.7rem + env(safe-area-inset-bottom,0px));right:calc(.7rem + env(safe-area-inset-right,0px));padding:.75rem 1.15rem;font-size:.85rem}
+  .logo{width:104px;height:104px}
+  nav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.6rem 1rem;gap:.25rem}
+  nav::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap;padding:.55rem 1rem;min-height:44px;display:flex;align-items:center}
+  .btn{min-height:48px}
+  .actions .btn{flex:1 1 45%;padding:.9rem 1rem;font-size:.92rem}
+  summary{min-height:48px;display:flex;align-items:center}
+  .grid{grid-template-columns:1fr}
+  .tipbar{flex-wrap:wrap}
+}
+
+/* ---------- LARGE DESKTOP ---------- */
+@media(min-width:1440px){
+  body{font-size:1.06rem}
+  section{max-width:1140px}
+}
+
+@media print{
+  .hero,nav,footer,.float-cta,.tipbar,section:not(#register){display:none!important}
+  #register{padding:0;max-width:100%}
+  #register .lead,#register .eyebrow{display:none}
+  .form-wrap{box-shadow:none;border-radius:0;max-width:100%}
+  .actions,.progress,.progress-label,.saved-ind,.hint,.remove-child,.msg,.help-box{display:none!important}
+  fieldset{border:1px solid #bbb;page-break-inside:avoid}
+  input,select,textarea{border:1px solid #bbb;background:#fff}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#register">Skip to registration form</a>
+
+<header class="hero" id="top">
+  <span class="sparkle" aria-hidden="true" style="top:16%;left:10%">✦</span>
+  <span class="sparkle" aria-hidden="true" style="top:24%;right:13%;animation-delay:1.1s">✦</span>
+  <span class="sparkle" aria-hidden="true" style="bottom:32%;left:18%;animation-delay:2.2s;font-size:1rem">✦</span>
+  <span class="sparkle" aria-hidden="true" style="bottom:26%;right:20%;animation-delay:.6s;font-size:.9rem">✦</span>
+  <svg class="logo" viewBox="0 0 200 200" role="img" aria-label="Love Bug Childcare logo — a smiling ladybug with heart spots on a cream badge">
+    <defs>
+      <radialGradient id="lgRed" cx="35%" cy="28%" r="85%">
+        <stop offset="0%" stop-color="#ff5f7e"/><stop offset="100%" stop-color="#c9184a"/>
+      </radialGradient>
+      <radialGradient id="lgHead" cx="35%" cy="28%" r="85%">
+        <stop offset="0%" stop-color="#5a4650"/><stop offset="100%" stop-color="#3d2c34"/>
+      </radialGradient>
+      <path id="hspot" d="M0 3 C-1 1 -4 -1 -6 -1 C-9 -1 -10 2 -10 4 C-10 8 -4 12 0 15 C4 12 10 8 10 4 C10 2 9 -1 6 -1 C4 -1 1 1 0 3 Z"/>
+    </defs>
+    <circle cx="100" cy="100" r="97" fill="#fffbf5"/>
+    <circle cx="100" cy="100" r="90" fill="#ffe5ec"/>
+    <circle cx="100" cy="100" r="84" fill="none" stroke="#ffb703" stroke-width="3.5" stroke-dasharray="0.5 11" stroke-linecap="round"/>
+    <path d="M38 55 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" fill="#ffb703"/>
+    <path d="M163 62 l2.5 7 7 2.5 -7 2.5 -2.5 7 -2.5 -7 -7 -2.5 7 -2.5 z" fill="#ff8fa3"/>
+    <path d="M158 142 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2 z" fill="#4caf7d"/>
+    <path d="M43 140 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z" fill="#ff8fa3"/>
+    <path d="M60 148 Q100 174 140 148 Q138 170 100 177 Q62 170 60 148 Z" fill="#7dcea0"/>
+    <path d="M100 152 Q98 166 100 177" stroke="#4caf7d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M88 60 Q80 46 72 42" stroke="#3d2c34" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M112 60 Q120 46 128 42" stroke="#3d2c34" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <use href="#hspot" fill="#c9184a" transform="translate(72 28) scale(0.9)"/>
+    <use href="#hspot" fill="#c9184a" transform="translate(128 28) scale(0.9)"/>
+    <circle cx="100" cy="66" r="24" fill="url(#lgHead)"/>
+    <circle cx="92" cy="62" r="7.5" fill="#fff"/><circle cx="108" cy="62" r="7.5" fill="#fff"/>
+    <circle cx="93" cy="63.5" r="4" fill="#2b1c22"/><circle cx="107" cy="63.5" r="4" fill="#2b1c22"/>
+    <circle cx="94.5" cy="61.5" r="1.4" fill="#fff"/><circle cx="108.5" cy="61.5" r="1.4" fill="#fff"/>
+    <path d="M95 74 Q100 79 105 74" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="84" cy="71" r="4" fill="#ff8fa3" opacity=".85"/><circle cx="116" cy="71" r="4" fill="#ff8fa3" opacity=".85"/>
+    <ellipse cx="100" cy="120" rx="42" ry="46" fill="url(#lgRed)"/>
+    <line x1="100" y1="80" x2="100" y2="164" stroke="#800f2f" stroke-width="4"/>
+    <use href="#hspot" fill="#800f2f" transform="translate(80 105) scale(0.55)"/>
+    <use href="#hspot" fill="#800f2f" transform="translate(120 105) scale(0.55)"/>
+    <use href="#hspot" fill="#800f2f" transform="translate(85 137) scale(0.45)"/>
+    <use href="#hspot" fill="#800f2f" transform="translate(115 137) scale(0.45)"/>
+    <ellipse cx="82" cy="163" rx="7" ry="4.5" fill="#3d2c34"/>
+    <ellipse cx="118" cy="163" rx="7" ry="4.5" fill="#3d2c34"/>
+  </svg>
+  <h1>Love Bug Childcare</h1>
+  <p class="tag">A boutique, licensed home-away-from-home where little ones learn, play, and grow — one tiny adventure at a time.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="#register">🐞 Register Your Little Bug</a>
+    <a class="btn btn-light" href="#contact">Book a Tour</a>
+  </div>
+</header>
+
+<div class="tipbar" id="tipbar" hidden>
+  <span>💡 <strong>Tip:</strong> your progress saves automatically on this device and expires after 24 hours — come back anytime.</span>
+  <button type="button" id="tipClose" aria-label="Dismiss tip">✕</button>
+</div>
+
+<nav aria-label="Main">
+  <a href="#about">About</a>
+  <a href="#day">A Day With Us</a>
+  <a href="#programs">Programs</a>
+  <a href="#hours">Hours & Rates</a>
+  <a href="#love">Family Love</a>
+  <a href="#faq">FAQ</a>
+  <a href="#register">Register</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="reveal">
+  <p class="eyebrow">Why families choose us</p>
+  <h2>Small Centre. Big Heart.</h2>
+  <p class="lead">We keep our ratios small and our standards high — every little bug gets seen, heard, and hugged.</p>
+  <div class="cards">
+    <div class="card"><div class="icon">🛡️</div><h3>Safe & Secure</h3><p>Certified caregivers, first-aid trained staff, child-proofed spaces, and secure sign-in/sign-out every single day.</p></div>
+    <div class="card"><div class="icon">🌱</div><h3>Learn Through Play</h3><p>Age-appropriate activities that build social skills, creativity, confidence, and genuine kindergarten readiness.</p></div>
+    <div class="card"><div class="icon">🍎</div><h3>Healthy Meals</h3><p>Nutritious, balanced menus cooked on site — with full accommodations for allergies and dietary needs.</p></div>
+    <div class="card"><div class="icon">📸</div><h3>Daily Updates</h3><p>Photos and little highlights sent to parents so you never miss a moment of your little bug's day.</p></div>
+  </div>
+  <div class="badges">
+    <span class="badge">✔ Licensed Facility</span>
+    <span class="badge">✔ First Aid Certified</span>
+    <span class="badge">✔ Criminal Record Checks</span>
+    <span class="badge">✔ Subsidy Friendly</span>
+    <span class="badge">✔ Nut-Aware Kitchen</span>
+  </div>
+</section>
+
+<section id="day" class="reveal">
+  <p class="eyebrow">A peek inside</p>
+  <h2>A Day at Love Bug</h2>
+  <div class="timeline">
+    <div class="t-item"><strong>7:00 — Warm welcomes</strong><br>Drop-off, cozy hellos, and free play while friends arrive.</div>
+    <div class="t-item"><strong>8:30 — Breakfast & circle time</strong><br>A healthy morning meal, then songs, stories, and show-and-tell.</div>
+    <div class="t-item"><strong>10:00 — Adventure hour</strong><br>Outdoor play, nature walks, or sensory stations — weather-proof fun either way.</div>
+    <div class="t-item"><strong>12:00 — Lunch & rest</strong><br>Hot lunch, then quiet-time naps or calm table activities for older kids.</div>
+    <div class="t-item"><strong>3:00 — Create & connect</strong><br>Arts, crafts, building projects, and plenty of imagination-fuelled play.</div>
+    <div class="t-item"><strong>5:30 — Happy goodbyes</strong><br>Story wind-down, pickup, and a snapshot of the day sent to you.</div>
+  </div>
+</section>
+
+<section id="programs" class="reveal">
+  <p class="eyebrow">Our programs</p>
+  <h2>Room to Grow, at Every Age</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">🐛</div><h3>Little Larvae</h3><p><strong>0–18 months.</strong> Gentle routines, sensory play, and plenty of cuddles in a calm infant room.</p></div>
+    <div class="card"><div class="icon">🐞</div><h3>Buzzy Toddlers</h3><p><strong>18 months–3 years.</strong> Hands-on exploring, music, movement, and early language fun.</p></div>
+    <div class="card"><div class="icon">🦋</div><h3>Busy Butterflies</h3><p><strong>3–5 years.</strong> Preschool readiness: letters, numbers, friendship skills, and big imaginations.</p></div>
+    <div class="card"><div class="icon">🐝</div><h3>Before & After School</h3><p><strong>5–10 years.</strong> Safe drop-off/pickup support, homework help, and active outdoor play.</p></div>
+  </div>
+</section>
+
+<section id="hours" class="reveal">
+  <p class="eyebrow">Practical details</p>
+  <h2>Hours & Rates</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">🕗</div><h3>Hours</h3><p>Monday–Friday<br>7:00 AM – 5:30 PM<br>Closed statutory holidays</p></div>
+    <div class="card"><div class="icon">💰</div><h3>Full-Time</h3><p>5 days/week<br>$— / month<br><em>includes meals & snacks</em></p></div>
+    <div class="card"><div class="icon">🕐</div><h3>Part-Time</h3><p>2–3 days/week<br>$— / month<br><em>choose your days</em></p></div>
+    <div class="card"><div class="icon">🎒</div><h3>Drop-In</h3><p>Subject to availability<br>$— / day<br><em>booked 24h ahead</em></p></div>
+  </div>
+  <p class="lead" style="margin-top:1.6rem">Ask us about <strong>government childcare subsidy</strong> — we're happy to help with the paperwork.</p>
+</section>
+
+<section id="love" class="reveal">
+  <p class="eyebrow">Family love</p>
+  <h2>What Parents Say</h2>
+  <div class="tst" id="tstBox">
+    <div class="stars" aria-hidden="true">★★★★★</div>
+    <blockquote id="tstQuote" aria-live="polite">"Our daughter runs to the door every morning. The caregivers know her quirks, her favourite songs, even her nap-time blanket routine. That's real care."</blockquote>
+    <cite id="tstCite">— Sarah M., mom of a Busy Butterfly</cite>
+    <div class="dots" id="tstDots" role="group" aria-label="Choose testimonial"></div>
+  </div>
+</section>
+
+<section id="faq" class="reveal">
+  <p class="eyebrow">Good questions</p>
+  <h2>Frequently Asked</h2>
+  <details><summary>Are you licensed and insured?</summary><p>Yes — we're a fully licensed facility with liability insurance, and all staff hold current first-aid certification and criminal record checks.</p></details>
+  <details><summary>What's your child-to-caregiver ratio?</summary><p>We keep ratios intentionally small: 3:1 for infants, 4:1 for toddlers, and 6:1 for preschoolers, so every child gets real one-on-one time.</p></details>
+  <details><summary>How do you handle allergies and dietary needs?</summary><p>Our kitchen is nut-aware, and every allergy is posted in the kitchen and classroom. You'll review and sign an allergy plan with us before your child's first day.</p></details>
+  <details><summary>What if my child gets sick at daycare?</summary><p>We call you right away and keep your little one comfortable in a quiet space. Our full sick-child policy is shared during registration.</p></details>
+  <details><summary>Do you accept childcare subsidy?</summary><p>Absolutely. We're a subsidy-friendly centre and will help you navigate the application so nothing gets lost in the paperwork.</p></details>
+  <details><summary>Is there a waitlist?</summary><p>Spaces are first-come, first-served by registration date. Submitting the form below puts your little bug on our list right away — no deposit required to hold a spot in line.</p></details>
+</section>
+
+<section id="register" class="reveal">
+  <p class="eyebrow">Let's get started</p>
+  <h2>Register Your Little Bug</h2>
+  <p class="lead">Takes about 5 minutes. Your progress saves automatically on this device for 24 hours, so you can come back anytime.</p>
+
+  <div class="form-wrap">
+    <div class="form-head">
+      <h3>🐞 Registration Form</h3>
+      <p>Questions marked * are required. Everything else helps us care for your child even better.</p>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0% complete</div>
+    </div>
+
+    <form id="regForm" autocomplete="on" novalidate>
+
+      <div class="hp" aria-hidden="true">
+        <label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <fieldset>
+        <legend>Parent / Guardian</legend>
+        <div class="grid">
+          <label class="field"><span class="req">Full Name</span><input name="parentName" required maxlength="100" autocomplete="name"><em class="err">Please enter your name</em></label>
+          <label class="field"><span class="req">Relationship to Child</span><input name="relationship" required maxlength="60" autocomplete="off"><em class="err">Required</em></label>
+          <label class="field"><span class="req">Phone</span><input name="phone" type="tel" required maxlength="25" autocomplete="tel" inputmode="tel"><em class="err">Please enter a valid phone number</em></label>
+          <label class="field"><span class="req">Email</span><input name="email" type="email" required maxlength="120" autocomplete="email" inputmode="email"><em class="err">Please enter a valid email</em></label>
+          <label class="field"><span>Home Address</span><input name="address" maxlength="200" autocomplete="street-address"></label>
+          <label class="field"><span>Second Parent / Guardian</span><input name="parent2" maxlength="100"></label>
+          <label class="field"><span>How did you hear about us?<span class="help-dot" tabindex="0" data-tip="Helps us say thank you to the friend who sent you!">?</span></span>
+            <select name="referral">
+              <option value="">Select…</option>
+              <option>Google search</option>
+              <option>Referred by a friend</option>
+              <option>Social media</option>
+              <option>Drove / walked by</option>
+              <option>Community notice</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <div id="children">
+        <fieldset class="child-block">
+          <legend>Child 1</legend>
+          <div class="grid">
+            <label class="field"><span class="req">Child's Full Name</span><input name="childName" required maxlength="100"><em class="err">Required</em></label>
+            <label class="field"><span class="req">Date of Birth</span><input name="dob" type="date" required><em class="err">Required</em></label>
+            <label class="field"><span class="req">Program<span class="help-dot" tabindex="0" data-tip="Not sure which room? Enter their birthday and we'll suggest the right fit.">?</span></span>
+              <select name="program" required>
+                <option value="">Select…</option>
+                <option value="larvae">Little Larvae (0–18 mo)</option>
+                <option value="toddlers">Buzzy Toddlers (18 mo–3 yr)</option>
+                <option value="butterflies">Busy Butterflies (3–5 yr)</option>
+                <option value="school">Before & After School (5–10 yr)</option>
+              </select>
+              <em class="err">Required</em>
+            </label>
+            <label class="field"><span class="req">Schedule</span>
+              <select name="schedule" required>
+                <option value="">Select…</option>
+                <option>Full-Time (5 days)</option>
+                <option>Part-Time (3 days)</option>
+                <option>Part-Time (2 days)</option>
+                <option>Drop-In</option>
+              </select>
+              <em class="err">Required</em>
+            </label>
+            <label class="field"><span>Preferred Start Date</span><input name="startDate" type="date"><em class="err">Start date can't be in the past</em></label>
+            <label class="field"><span>Days Needed<span class="help-dot" tabindex="0" data-tip="For part-time care, tell us which weekdays you need.">?</span></span><input name="days" maxlength="60" placeholder="e.g., Mon, Wed, Fri"></label>
+          </div>
+          <em class="hint" data-hint-for="dob"></em>
+        </fieldset>
+      </div>
+
+      <button type="button" class="btn btn-ghost" id="addChild" style="margin-bottom:1.5rem">＋ Add Another Child</button>
+
+      <fieldset>
+        <legend>Health & Safety</legend>
+        <div class="grid">
+          <label class="field"><span>Allergies / Medical Conditions<span class="help-dot" tabindex="0" data-tip="Even mild sensitivities matter — our kitchen plans every meal and snack around these.">?</span></span><textarea name="allergies" rows="3" maxlength="600" placeholder="List allergies, medications, or conditions — or write 'None'"></textarea></label>
+          <label class="field"><span class="req">Emergency Contact (Name & Phone)<span class="help-dot" tabindex="0" data-tip="Someone we can call if we can't reach you — a grandparent, neighbour, or close friend works great.">?</span></span><input name="emergency" required maxlength="150" placeholder="Name — Phone"><em class="err">Required — this is critical for your child's safety</em></label>
+          <label class="field"><span>Authorized Pick-Up (besides guardians)</span><input name="pickup" maxlength="200" placeholder="Name(s)"></label>
+          <label class="field"><span>Family Doctor / Clinic</span><input name="doctor" maxlength="150"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tell Us About Your Little Bug</legend>
+        <label class="field"><span>Comfort items, routines, potty training, nap habits, favourite activities:</span>
+        <textarea name="notes" rows="4" maxlength="800" placeholder="Anything that helps us help them feel at home…"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Consent</legend>
+        <label class="check-row"><input type="checkbox" name="consentPhoto"> Photos of my child may be shared with parents in our private daily updates</label>
+        <label class="check-row"><input type="checkbox" name="consentOutdoor" required> I consent to supervised outdoor play and neighbourhood walks *</label>
+        <em class="err" id="consentErr" style="display:none">Outdoor-play consent is required</em>
+      </fieldset>
+
+      <div class="help-box"><span aria-hidden="true">🙋</span><span><strong>Need a hand?</strong> Call (555) 123-4567 or email hello@lovebugchildcare.com — we'll happily fill this out with you over the phone.</span></div>
+
+      <p class="saved-ind" id="savedInd" aria-live="polite"></p>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="btnLoadDraft">↺ Load Saved Draft</button>
+        <button type="button" class="btn btn-ghost" id="btnDownload">⬇ Download Copy (JSON)</button>
+        <button type="button" class="btn btn-ghost" id="btnPrint">🖨 Print Form</button>
+        <button type="submit" class="btn btn-primary" id="btnSubmit">🐞 Submit Registration</button>
+      </div>
+
+      <div id="formMsg" class="msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <p class="eyebrow">Come say hi</p>
+  <h2>Visit Us</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">📍</div><h3>Address</h3><p>123 Cuddlebug Lane<br>Your City, AB</p></div>
+    <div class="card"><div class="icon">📞</div><h3>Phone</h3><p>(555) 123-4567</p></div>
+    <div class="card"><div class="icon">✉️</div><h3>Email</h3><p>hello@lovebugchildcare.com</p></div>
+    <div class="card"><div class="icon">🚪</div><h3>Book a Tour</h3><p>Message us anytime — we'll set up a visit within 48 hours.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>🐞 Love Bug Childcare</strong> — Where little bugs grow big wings. <span class="heart">💗</span></p>
+  <p>© 2026 · <a href="#register">Register Today</a> · Licensed & insured</p>
+</footer>
+
+<a class="float-cta" href="#register" id="floatCta">🐞 Register Now</a>
+
+<script>
+(function(){
+  'use strict';
+  var form = document.getElementById('regForm');
+  var DRAFT_KEY = 'lovebug_registration_v2';
+  var THROTTLE_KEY = 'lovebug_last_submit';
+  var DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
+  var saveTimer = null;
+  var submitted = false;
+  var todayISO = new Date().toISOString().slice(0,10);
+
+  function nameSel(k){
+    return '[name="' + String(k).replace(/[\\"]/g, '\\$&') + '"]';
+  }
+  function safeGet(key){ try{ return localStorage.getItem(key); }catch(e){ return null; } }
+  function safeSet(key, val){ try{ localStorage.setItem(key, val); return true; }catch(e){ return false; } }
+  function safeRemove(key){ try{ localStorage.removeItem(key); }catch(e){} }
+
+  function readDraft(){
+    var raw = safeGet(DRAFT_KEY);
+    if(!raw) return null;
+    var w;
+    try{ w = JSON.parse(raw); }
+    catch(e){ safeRemove(DRAFT_KEY); return null; }
+    if(!w || !w.d || typeof w.d !== 'object'){ safeRemove(DRAFT_KEY); return null; }
+    if(w.t && (Date.now() - w.t > DRAFT_TTL_MS)){ safeRemove(DRAFT_KEY); return null; }
+    return w.d;
+  }
+
+  var tipbar = document.getElementById('tipbar');
+  if(!safeGet('lovebug_tip_dismissed')) tipbar.removeAttribute('hidden');
+  document.getElementById('tipClose').addEventListener('click', function(){
+    tipbar.setAttribute('hidden','');
+    safeSet('lovebug_tip_dismissed','1');
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var navLinks = document.querySelectorAll('nav a');
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){ spy.observe(s); });
+
+  var floatCta = document.getElementById('floatCta');
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ floatCta.classList.toggle('hidden', e.isIntersecting); });
+  },{threshold:.15}).observe(document.getElementById('register'));
+
+  var uidSeq = 0;
+  form.querySelectorAll('.field').forEach(function(f){
+    var em = f.querySelector('.err');
+    var inp = f.querySelector('input,select,textarea');
+    if(em && inp){
+      em.id = 'err-' + (++uidSeq);
+      inp.setAttribute('aria-describedby', em.id);
+    }
+  });
+
+  var quotes = [
+    {q:"Our daughter runs to the door every morning. The caregivers know her quirks, her favourite songs, even her nap-time blanket routine. That's real care.", c:"— Sarah M., mom of a Busy Butterfly"},
+    {q:"The daily photo updates were the deciding factor for us — and the warm, patient staff made us stay. Our son has blossomed here.", c:"— Devon & Priya T., parents of a Buzzy Toddler"},
+    {q:"As a first-time mom I was a nervous wreck about daycare. Two weeks in, I cried happy tears picking him up. They genuinely love these kids.", c:"— Jess L., mom of a Little Larva"},
+    {q:"Homework help plus outdoor play — our daughter comes home tired, happy, and full of stories. Worth every penny.", c:"— Marcus D., dad of an after-schooler"}
+  ];
+  var qi = 0, qEl = document.getElementById('tstQuote'), cEl = document.getElementById('tstCite'), dotsEl = document.getElementById('tstDots');
+  var carouselTimer = null;
+  quotes.forEach(function(_,i){
+    var b = document.createElement('button');
+    b.className = 'dot' + (i===0?' on':'');
+    b.setAttribute('aria-label','Testimonial ' + (i+1));
+    b.addEventListener('click',function(){ showQuote(i); restartCarousel(); });
+    dotsEl.appendChild(b);
+  });
+  function showQuote(i){
+    qi = i;
+    qEl.style.opacity = 0;
+    setTimeout(function(){
+      qEl.textContent = quotes[i].q; cEl.textContent = quotes[i].c;
+      qEl.style.opacity = 1;
+      dotsEl.querySelectorAll('.dot').forEach(function(d,j){ d.classList.toggle('on', j===i); });
+    },300);
+  }
+  function startCarousel(){ if(!reduceMotion && !carouselTimer){ carouselTimer = setInterval(function(){ showQuote((qi+1)%quotes.length); }, 6000); } }
+  function stopCarousel(){ if(carouselTimer){ clearInterval(carouselTimer); carouselTimer = null; } }
+  function restartCarousel(){ stopCarousel(); startCarousel(); }
+  var tstBox = document.getElementById('tstBox');
+  tstBox.addEventListener('mouseenter', stopCarousel);
+  tstBox.addEventListener('mouseleave', startCarousel);
+  tstBox.addEventListener('focusin', stopCarousel);
+  tstBox.addEventListener('focusout', startCarousel);
+  startCarousel();
+
+  function applyDateLimits(scope){
+    (scope || document).querySelectorAll('#children input[name=dob]').forEach(function(el){ el.max = todayISO; });
+    (scope || document).querySelectorAll('#children input[name=startDate]').forEach(function(el){ el.min = todayISO; });
+  }
+  applyDateLimits();
+
+  function collectData(){
+    var d = { children: [], submittedAt: new Date().toISOString() };
+    new FormData(form).forEach(function(v,k){
+      if(k === 'website') return;
+      var firstEl = form.querySelector(nameSel(k));
+      if(firstEl && firstEl.closest('#children')) return;
+      if(v !== '') d[k] = v;
+    });
+    document.querySelectorAll('#children .child-block').forEach(function(block){
+      var c = {};
+      block.querySelectorAll('input,select').forEach(function(el){ if(el.name) c[el.name] = el.value; });
+      d.children.push(c);
+    });
+    form.querySelectorAll('input[type=checkbox]').forEach(function(c){ d[c.name] = c.checked; });
+    return d;
+  }
+  function saveDraft(quiet){
+    if(safeSet(DRAFT_KEY, JSON.stringify({ t: Date.now(), d: collectData() }))){
+      var ind = document.getElementById('savedInd');
+      var t = new Date();
+      ind.textContent = '✓ Progress saved ' + ((t.getHours()%12)||12) + ':' + String(t.getMinutes()).padStart(2,'0') + (t.getHours()<12?' AM':' PM');
+    }else if(!quiet){ alert('Could not save draft on this device (private mode or storage disabled).'); }
+  }
+  form.addEventListener('input', function(){
+    if(submitted) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){ saveDraft(true); }, 700);
+  });
+  document.getElementById('btnLoadDraft').addEventListener('click', function(){
+    var d = readDraft();
+    if(!d){ alert('No saved draft found (drafts expire after 24 hours).'); return; }
+    applyDraft(d);
+    updateProgress();
+    alert('Draft loaded.');
+  });
+  function applyDraft(d){
+    if(!d.children) return;
+    while(document.querySelectorAll('#children .child-block').length < d.children.length) addChildBlock(true);
+    var blocks = document.querySelectorAll('#children .child-block');
+    d.children.forEach(function(c,i){
+      var b = blocks[i];
+      Object.keys(c).forEach(function(k){
+        var el = b.querySelector(nameSel(k));
+        if(el) el.value = c[k];
+      });
+    });
+    Object.keys(d).forEach(function(k){
+      if(k === 'children') return;
+      var els = form.querySelectorAll(nameSel(k));
+      if(els.length) els[0].value = d[k];
+    });
+    form.querySelectorAll('input[type=checkbox]').forEach(function(c){ if(c.name in d) c.checked = !!d[c.name]; });
+  }
+
+  function addChildBlock(silent){
+    var blocks = document.querySelectorAll('#children .child-block');
+    if(blocks.length >= 4){ if(!silent) alert('Up to 4 children per form — please submit a second form for more.'); return; }
+    var clone = blocks[0].cloneNode(true);
+    clone.querySelectorAll('input,select').forEach(function(el){
+      el.value = '';
+      if(el.tagName === 'SELECT') el.selectedIndex = 0;
+    });
+    clone.querySelectorAll('.field.invalid').forEach(function(f){ f.classList.remove('invalid'); });
+    var hint = clone.querySelector('.hint'); if(hint) hint.classList.remove('show');
+    clone.querySelector('legend').textContent = 'Child ' + (blocks.length + 1);
+    var rm = document.createElement('button');
+    rm.type = 'button'; rm.className = 'remove-child'; rm.textContent = '✕ Remove';
+    rm.addEventListener('click', function(){ clone.remove(); renumber(); updateProgress(); });
+    clone.appendChild(rm);
+    document.getElementById('children').appendChild(clone);
+    applyDateLimits(clone);
+    if(!silent) clone.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function renumber(){
+    document.querySelectorAll('#children .child-block').forEach(function(b,i){ b.querySelector('legend').textContent = 'Child ' + (i+1); });
+  }
+  document.getElementById('addChild').addEventListener('click', function(){ addChildBlock(false); });
+
+  document.getElementById('children').addEventListener('change', function(e){
+    if(e.target.name !== 'dob') return;
+    var block = e.target.closest('.child-block');
+    var hint = block.querySelector('[data-hint-for="dob"]');
+    if(!e.target.value){ hint.classList.remove('show'); return; }
+    var dob = new Date(e.target.value);
+    if(isNaN(dob) || dob > new Date()){ hint.classList.remove('show'); return; }
+    var months = (Date.now() - dob.getTime()) / (1000*60*60*24*30.44);
+    var rec;
+    if(months < 18) rec = 'larvae';
+    else if(months < 36) rec = 'toddlers';
+    else if(months < 60) rec = 'butterflies';
+    else rec = 'school';
+    var sel = block.querySelector('[name="program"]');
+    if(!sel.value) sel.value = rec;
+    var names = {larvae:'Little Larvae', toddlers:'Buzzy Toddlers', butterflies:'Busy Butterflies', school:'Before & After School'};
+    hint.textContent = '💡 Based on their age, we suggest: ' + names[rec] + ' (' + Math.round(months) + ' months old)';
+    hint.classList.add('show');
+  });
+
+  document.querySelectorAll('.err').forEach(function(e){ e.dataset.orig = e.textContent; });
+  function setErr(el, text){
+    var field = el.closest('.field'); if(!field) return;
+    var em = field.querySelector('.err'); if(!em) return;
+    em.textContent = text || em.dataset.orig || 'Required';
+    field.classList.toggle('invalid', !!text);
+  }
+  function validateField(el){
+    var field = el.closest('.field');
+    if(!field) return true;
+    var ok = !el.required || (el.value && el.value.trim() !== '');
+    var errText = ok ? '' : 'Required';
+    if(ok && el.type === 'email' && el.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)){ ok = false; errText = 'Please enter a valid email'; }
+    if(ok && el.type === 'tel' && el.value && el.value.replace(/[^0-9]/g,'').length < 7){ ok = false; errText = 'Please enter a valid phone number'; }
+    if(el.name === 'dob' && ok && el.value){
+      if(el.value > todayISO){ ok = false; errText = "Birthdate can't be in the future"; }
+      else {
+        var months = (Date.now() - new Date(el.value).getTime()) / (1000*60*60*24*30.44);
+        if(months > 132){ ok = false; errText = 'Our programs serve children up to age 10 — please contact us directly'; }
+      }
+    }
+    if(el.name === 'startDate' && ok && el.value && el.value < todayISO){ ok = false; errText = "Start date can't be in the past"; }
+    setErr(el, errText);
+    return ok;
+  }
+  form.addEventListener('blur', function(e){
+    var el = e.target;
+    if(!el.matches('input,select,textarea')) return;
+    if(el.type === 'text' || el.type === 'tel' || el.type === 'email' || el.tagName === 'TEXTAREA'){
+      if(el.value) el.value = el.value.trim();
+    }
+    if(el.value) validateField(el);
+  }, true);
+  form.addEventListener('input', function(e){
+    if(e.target.closest('.field') && e.target.closest('.field').classList.contains('invalid')) validateField(e.target);
+  });
+
+  function updateProgress(){
+    var req = form.querySelectorAll('[required]');
+    var done = 0;
+    req.forEach(function(el){
+      if(el.type === 'checkbox'){ if(el.checked) done++; }
+      else if(el.value && el.value.trim() !== '') done++;
+    });
+    var pct = req.length ? Math.round(done / req.length * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = pct + '% complete';
+  }
+  form.addEventListener('input', updateProgress);
+  form.addEventListener('change', updateProgress);
+
+  function confetti(){
+    if(reduceMotion) return;
+    var colors = ['#c9184a','#d4a24e','#f6d58f','#ff8fa3','#800f2f'];
+    for(var i=0;i<50;i++){
+      var s = document.createElement('span');
+      s.className = 'confetti';
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.background = colors[i % colors.length];
+      s.style.animationDuration = (2 + Math.random()*2) + 's';
+      s.style.animationDelay = (Math.random()*.6) + 's';
+      document.body.appendChild(s);
+      setTimeout(function(node){ return function(){ node.remove(); }; }(s), 5000);
+    }
+  }
+  function downloadSubmission(){
+    var blob = new Blob([JSON.stringify(collectData(), null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'lovebug-registration-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(submitted) return;
+
+    if(form.elements.website && form.elements.website.value){
+      var fake = document.getElementById('formMsg');
+      fake.textContent = '🐞 Thank you! Your registration has been received.';
+      fake.classList.add('show');
+      return;
+    }
+
+    var last = parseInt(safeGet(THROTTLE_KEY) || '0', 10);
+    if(!isNaN(last) && Date.now() - last < 60000){
+      alert('Your registration was just submitted. Please wait a minute before submitting again — or call us at (555) 123-4567.');
+      return;
+    }
+
+    var consent = form.elements.consentOutdoor;
+    var consentErr = document.getElementById('consentErr');
+    consentErr.style.display = (!consent.checked) ? 'block' : 'none';
+    var firstBad = null;
+    form.querySelectorAll('[required]').forEach(function(el){
+      if(el.type === 'checkbox') return;
+      if(!validateField(el) && !firstBad) firstBad = el;
+    });
+    if(firstBad){
+      firstBad.focus();
+      firstBad.closest('.field').scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(!consent.checked){
+      consent.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    submitted = true;
+    safeSet(THROTTLE_KEY, String(Date.now()));
+    safeRemove(DRAFT_KEY);
+    var name = (document.querySelector('#children .child-block [name=childName]').value.split(' ')[0]) || 'your little bug';
+    var msg = document.getElementById('formMsg');
+    var btn = document.getElementById('btnSubmit');
+    btn.disabled = true;
+    btn.textContent = '✓ Submitted';
+    msg.textContent = "🐞 Thank you! " + name + "'s spot request has been received. We'll contact you within 1–2 business days — a copy has been downloaded for your records. For your privacy, your saved answers have been cleared from this device.";
+    var restart = document.createElement('button');
+    restart.type = 'button';
+    restart.className = 'restart';
+    restart.id = 'btnRestart';
+    restart.textContent = 'Start a new registration';
+    msg.appendChild(document.createElement('br'));
+    msg.appendChild(restart);
+    restart.addEventListener('click', resetForm);
+    msg.classList.add('show');
+    confetti();
+    downloadSubmission();
+    msg.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  function resetForm(){
+    submitted = false;
+    safeRemove(DRAFT_KEY);
+    var blocks = document.querySelectorAll('#children .child-block');
+    for(var i = 1; i < blocks.length; i++) blocks[i].remove();
+    renumber();
+    form.reset();
+    form.querySelectorAll('.field.invalid').forEach(function(f){ f.classList.remove('invalid'); });
+    document.querySelectorAll('.hint').forEach(function(h){ h.classList.remove('show'); });
+    var btn = document.getElementById('btnSubmit');
+    btn.disabled = false;
+    btn.textContent = '🐞 Submit Registration';
+    var msg = document.getElementById('formMsg');
+    msg.classList.remove('show');
+    msg.textContent = '';
+    document.getElementById('savedInd').textContent = '';
+    updateProgress();
+    form.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  document.getElementById('btnDownload').addEventListener('click', downloadSubmission);
+  document.getElementById('btnPrint').addEventListener('click', function(){ window.print(); });
+
+  var restored = readDraft();
+  if(restored) applyDraft(restored);
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>
